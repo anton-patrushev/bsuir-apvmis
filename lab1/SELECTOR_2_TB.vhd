@@ -43,7 +43,7 @@ architecture Behavioral of SELECTOR_TB is
 
 begin
 
-    uut: entity work.SELECTOR port map(OE, D, C, B, A, Y, W);
+    uut: entity work.FLEX_SELECTOR port map(OE, D, C, B, A, Y, W);
     
     
     simulating: process

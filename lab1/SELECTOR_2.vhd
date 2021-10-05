@@ -32,15 +32,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity SELECTOR is
+entity FLEX_SELECTOR is
     Port (
         OE: in STD_LOGIC;
         D : in STD_LOGIC_VECTOR(0 to 7);
         C, B, A : in STD_LOGIC;
         Y, W : out STD_LOGIC);
-end SELECTOR;
+end FLEX_SELECTOR;
 
-architecture Behavioral of SELECTOR is
+architecture Behavioral of FLEX_SELECTOR is
     signal result: std_logic := '0';
 --    signal selection: std_logic_vector(2 downto 0);
 begin
