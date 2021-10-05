@@ -60,8 +60,8 @@ begin
         OR
     (D(7) AND A AND B AND C));
     
-    Y <= 'Z' when (OE) else tempY;
+    Y <= 'Z' when (OE = '1') else tempY;
 
-    W <= 'Z' when (OE) else not(tempY);
+    W <= 'Z' when (OE = '1') else not(tempY);
 
 end Behavioral;
