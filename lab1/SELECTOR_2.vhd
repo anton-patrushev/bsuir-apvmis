@@ -86,11 +86,11 @@ begin
             Y <= D(7); W <= not(D(7));
         else
              -- just in case
-             Y <= 'X'; W <= 'X';
+             Y <= 'Z'; W <= 'Z';
         end if;
 
         if(OE = '1') then
-            Y <= 'X'; W <= 'X';
+            Y <= 'Z'; W <= 'Z';
         end if;
                                        
     end process;   

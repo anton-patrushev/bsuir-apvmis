@@ -41,10 +41,8 @@ end ADD_GATE;
 
 architecture Behavioral of ADD_GATE is
     SIGNAL tempY: STD_LOGIC;
-    SIGNAL finalY: STD_LOGIC;
 
 begin
-    -- Y <= (not(A) AND not(B) AND not(C
 
     tempY <= ((D(0) AND not(A) AND not(B) AND not(C))
         OR
@@ -61,13 +59,9 @@ begin
     (D(6) AND not(A) AND B AND C)
         OR
     (D(7) AND A AND B AND C));
-
-    finalY <= not(OE) and tempY;
     
-    Y <= not(OE) and tempY;
+    Y <= 'Z' when (OE) else tempY;
 
-    -- Could not work if it executes concurrently - in that case we should copy Y logic and invert it
-    W <= not(tempY);
-
+    W <= 'Z' when (OE) else not(tempY);
 
 end Behavioral;
