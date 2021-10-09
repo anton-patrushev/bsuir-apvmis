@@ -14,20 +14,7 @@ begin
     process (CLK, NOT_R, NOT_S)
     variable q_value: std_logic :='0';
     begin
-        -- if  NOT_R='0' then
-        --     q_value :='0';
-        -- elsif NOT_S='0' then
-        --     q_value :='1';
-        -- elsif CLK'event and CLK= '1' then
-        --     if J='1' and K='1' then
-        --         q_value := not q_value;
-        --     elsif J='1' then
-        --         q_value := '1';
-        --     elsif K='1' then
-        --         q_value := '0';       
-        --     end if;
-        -- end if;
-
+        
         if (NOT_S = '0') then
             q_value := '1';
         elsif (NOT_R = '0') then

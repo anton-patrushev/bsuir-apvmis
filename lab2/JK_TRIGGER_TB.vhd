@@ -8,7 +8,6 @@ end JK_TRIGGER_TB;
 
 architecture Behavioral of JK_TRIGGER_TB is
     
-    SIGNAL D: STD_LOGIC_VECTOR (0 to 7):="10101010";
     SIGNAL CLK, NOT_R, NOT_S, J, K: STD_LOGIC;
     SIGNAL Q, NOT_Q: STD_LOGIC;
 
