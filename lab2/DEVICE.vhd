@@ -5,7 +5,7 @@ entity DEVICE is
     Port(
         NOT_G: in STD_LOGIC;
         R: in STD_LOGIC;
-        RCLK: in STD_LOGIC;
+        RCK: in STD_LOGIC;
         NOT_CCLR: in STD_LOGIC;
         U: in STD_LOGIC;
         NOT_LOAD: in STD_LOGIC;
@@ -36,8 +36,8 @@ architecture Behavioral of DEVICE is
         );
     end component;
 
-    signal NOT_RCLK: STD_LOGIC;
-    signal NOT_RCLK: STD_LOGIC;
+    signal NOT_RCK: STD_LOGIC;
+    signal NOT_CCK: STD_LOGIC;
 
     signal CCLR: STD_LOGIC;
 
@@ -78,7 +78,10 @@ architecture Behavioral of DEVICE is
     signal NOT_D1_C_OUT: STD_LOGIC;
     signal NOT_D1_D_OUT: STD_LOGIC;
 
-    -- TODO: D2 layer
+    signal NOT_D2_A_OUT: STD_LOGIC;
+    signal NOT_D2_B_OUT: STD_LOGIC;
+    signal NOT_D2_C_OUT: STD_LOGIC;
+    signal NOT_D2_D_OUT: STD_LOGIC;
 
     signal QA_VALUE: STD_LOGIC;
     signal QB_VALUE: STD_LOGIC;
@@ -86,7 +89,7 @@ architecture Behavioral of DEVICE is
     signal QD_VALUE: STD_LOGIC;
 begin
     -- not sure
-    NOT_RCLK <= not(RCLK);
+    NOT_RCK <= not(RCK);
     NOT_CCK <= not(CCK);
 
     CCLR <= not(NOT_CCLR);
@@ -154,10 +157,44 @@ begin
         NOT_Q => NOT_D1_D_OUT
     );
 
+    QA_VALUE <= not((R and NOT_D2_A_OUT) or (not(R) and NOT_D1_A_OUT));
+    QB_VALUE <= not((R and NOT_D2_B_OUT) or (not(R) and NOT_D1_B_OUT));
+    QC_VALUE <= not((R and NOT_D2_C_OUT) or (not(R) and NOT_D1_C_OUT));
+    QD_VALUE <= not((R and NOT_D2_D_OUT) or (not(R) and NOT_D1_D_OUT));
+
+    D2_A: JK_TRIGGER port map (
+        CLK => NOT_RCK,
+        J => D1_A_OUT,
+        K => NOT_D1_A_OUT,
+        NOT_Q => NOT_D2_A_OUT
+    );
+
+    D2_B: JK_TRIGGER port map (
+        CLK => NOT_RCK,
+        J => D1_B_OUT,
+        K => NOT_D1_B_OUT,
+        NOT_Q => NOT_D2_B_OUT
+    );
+
+    D2_C: JK_TRIGGER port map (
+        CLK => NOT_RCK,
+        J => D1_C_OUT,
+        K => NOT_D1_C_OUT,
+        NOT_Q => NOT_D2_C_OUT
+    );
+
+    D2_D: JK_TRIGGER port map (
+        CLK => NOT_RCK,
+        J => D1_D_OUT,
+        K => NOT_D1_D_OUT,
+        NOT_Q => NOT_D2_D_OUT
+    );
 
     QA <= 'Z' when (NOT_G = '1') else QA_VALUE;
     QB <= 'Z' when (NOT_G = '1') else QB_VALUE;
     QC <= 'Z' when (NOT_G = '1') else QC_VALUE;
     QD <= 'Z' when (NOT_G = '1') else QD_VALUE;
+
+    NOT_RCO <= not(not(NOT_ENT) and NOT_OR_1 and NOT_OR_2 and NOT_OR_3 and NOT_OR_4);
 
 end Behavioral;
