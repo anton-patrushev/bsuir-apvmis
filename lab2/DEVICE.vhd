@@ -38,14 +38,7 @@ architecture Behavioral of DEVICE is
 
     signal NOT_RCK: STD_LOGIC;
     signal NOT_CCK: STD_LOGIC;
-
-    signal CCLR: STD_LOGIC;
-
-    signal NOT_A: STD_LOGIC;
-    signal NOT_B: STD_LOGIC;
-    signal NOT_C: STD_LOGIC;
-    signal NOT_D: STD_LOGIC;
-
+    
     signal NOT_A_OR: STD_LOGIC;
     signal NOT_B_OR: STD_LOGIC;
     signal NOT_C_OR: STD_LOGIC;
@@ -88,23 +81,15 @@ architecture Behavioral of DEVICE is
     signal QC_VALUE: STD_LOGIC;
     signal QD_VALUE: STD_LOGIC;
 begin
-    -- not sure
     NOT_RCK <= not(RCK);
     NOT_CCK <= not(CCK);
 
-    CCLR <= not(NOT_CCLR);
+    NOT_A_OR <= not(A or NOT_LOAD);
+    NOT_B_OR <= not(B or NOT_LOAD);
+    NOT_C_OR <= not(C or NOT_LOAD);
+    NOT_D_OR <= not(D or NOT_LOAD);
 
-    NOT_A <= not(A);
-    NOT_B <= not(B);
-    NOT_C <= not(C);
-    NOT_D <= not(D);
-
-    NOT_A <= A or NOT_LOAD;
-    NOT_B <= B or NOT_LOAD;
-    NOT_C <= C or NOT_LOAD;
-    NOT_D <= D or NOT_LOAD;
-
-    ENP_AND <= not(NOT_LOAD) and NOT_ENP and NOT_ENT;
+    ENP_AND <= NOT_LOAD and not(NOT_ENP) and not(NOT_ENT);
 
     NOT_OR_1 <= not((D1_A_OUT and not(U)) or (U and NOT_D1_A_OUT));
     NOT_OR_2 <= not((D1_B_OUT and not(U)) or (U and NOT_D1_B_OUT));
@@ -122,37 +107,37 @@ begin
     NOT_D1_D_IN <= not(D1_D_IN);
 
     D1_A: JK_TRIGGER port map (
-        CLK => NOT_CCK,
+        CLK => CCK,
         J => D1_A_IN,
         K => NOT_D1_A_IN,
-        NOT_R => CCLR,
+        NOT_R => NOT_CCLR,
         Q => D1_A_OUT,
         NOT_Q => NOT_D1_A_OUT
     );
 
     D1_B: JK_TRIGGER port map (
-        CLK => NOT_CCK,
+        CLK => CCK,
         J => D1_B_IN,
         K => NOT_D1_B_IN,
-        NOT_R => CCLR,
+        NOT_R => NOT_CCLR,
         Q => D1_B_OUT,
         NOT_Q => NOT_D1_B_OUT
     );
 
     D1_C: JK_TRIGGER port map (
-        CLK => NOT_CCK,
+        CLK => CCK,
         J => D1_C_IN,
         K => NOT_D1_C_IN,
-        NOT_R => CCLR,
+        NOT_R => NOT_CCLR,
         Q => D1_C_OUT,
         NOT_Q => NOT_D1_C_OUT
     );
 
     D1_D: JK_TRIGGER port map (
-        CLK => NOT_CCK,
+        CLK => CCK,
         J => D1_D_IN,
         K => NOT_D1_D_IN,
-        NOT_R => CCLR,
+        NOT_R => NOT_CCLR,
         Q => D1_D_OUT,
         NOT_Q => NOT_D1_D_OUT
     );
@@ -163,28 +148,28 @@ begin
     QD_VALUE <= not((R and NOT_D2_D_OUT) or (not(R) and NOT_D1_D_OUT));
 
     D2_A: JK_TRIGGER port map (
-        CLK => NOT_RCK,
+        CLK => RCK,
         J => D1_A_OUT,
         K => NOT_D1_A_OUT,
         NOT_Q => NOT_D2_A_OUT
     );
 
     D2_B: JK_TRIGGER port map (
-        CLK => NOT_RCK,
+        CLK => RCK,
         J => D1_B_OUT,
         K => NOT_D1_B_OUT,
         NOT_Q => NOT_D2_B_OUT
     );
 
     D2_C: JK_TRIGGER port map (
-        CLK => NOT_RCK,
+        CLK => RCK,
         J => D1_C_OUT,
         K => NOT_D1_C_OUT,
         NOT_Q => NOT_D2_C_OUT
     );
 
     D2_D: JK_TRIGGER port map (
-        CLK => NOT_RCK,
+        CLK => RCK,
         J => D1_D_OUT,
         K => NOT_D1_D_OUT,
         NOT_Q => NOT_D2_D_OUT
