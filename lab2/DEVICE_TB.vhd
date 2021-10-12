@@ -67,13 +67,32 @@ begin
 
         R <= '0';
 
-        A <= '0';
+        A <= '1';
         B <= '0';
         C <= '0';
-        D <= '0';
-        wait for 10 ps;
+        D <= '1';
+        CCK <= '0';
+        NOT_LOAD <= '0';
 
+        wait for 10 ps;
+        
+        CCK <= '1';
+--        wait for 8 ps;
+        wait for 10 ps;
+        
+        CCK <= '0';
+--        wait for 8 ps;
+        wait for 10 ps;
+        
+        CCK <= '1';
+--       wait for 8 ps;
+        wait for 5 ps;
+        
         NOT_CCLR <= '0';
+        wait for 5ps;
+
+        CCK <= '0';
+--        NOT_CCLR <= '0';
         wait for 10 ps;
 
         CCK <= '1';
