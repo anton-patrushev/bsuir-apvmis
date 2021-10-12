@@ -45,10 +45,17 @@ begin
         J <= '1';
         wait for 20 ns;
         
-        NOT_S <= '0';
         J <= '0';
-        K <= '1';
+        K <= '0';
+        wait for 5 ns;
+        
+        NOT_R <= '0';
         wait for 20 ns;
+        
+        NOT_R <= '1';
+        NOT_S <= '0';
+        
+        wait;
         end process;
 
         clocking: process
