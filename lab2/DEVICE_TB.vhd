@@ -52,10 +52,8 @@ begin
         NOT_RCO
     );
 
-    -- SIGNAL ENABLE_CLOCKING: STD_LOGIC := '0';
 
     simulating: process
-        -- variable ENABLE_CLOCKING: STD_LOGIC := '0';
     begin
         NOT_G <= '0';
         NOT_CCLR <= '1';
@@ -112,7 +110,6 @@ begin
         
         RCK <= '0';
         CCK <= '1';
-
         wait for 10 ps;
 
         CCK <= '0';
@@ -141,46 +138,135 @@ begin
 
         CCK <= '0';
         wait for 10 ps;
+
+        --  10 clks
+
+
+        CCK <= '1';
+        wait for 10 ps;
+
+        CCK <= '0';
+        R <= '1';
+        wait for 10 ps;
+
+        CCK <= '1';
+        wait for 10 ps;
+
+        CCK <= '0';
+        wait for 10 ps;
+        
+        CCK <= '1';
+        wait for 5 ps;
+
+        U <= '0';
+        wait for 5 ps;
+
+        CCK <= '0';
+        RCK <= '1';
+        wait for 10 ps;
+
+        CCK <= '1';
+        RCK <= '0';
+        wait for 7 ps;
 
         NOT_G <= '1';
+        wait for 3 ps;
 
-        -- NOT_G <= '0';
-        -- A <= '1';
-        -- B <= '0';
-        -- C <= '0';
-        -- D <= '0';
-        -- wait for 20 ns;
+        --
 
-        -- NOT_G <= '0';
-        -- A <= '0';
-        -- B <= '1';
-        -- C <= '0';
-        -- D <= '0';
-        -- wait for 20 ns;
+        CCK <= '0';
+        RCK <= '1';
+        wait for 10 ps;
 
-        -- NOT_G <= '0';
-        -- A <= '1';
-        -- B <= '0';
-        -- C <= '1';
-        -- D <= '0';
-        -- wait for 20 ns;
+        CCK <= '1';
+        RCK <= '0';
+        wait for 10 ps;
 
-        -- NOT_G <= '0';
-        -- A <= '0';
-        -- B <= '0';
-        -- C <= '0';
-        -- D <= '1';
-        -- wait for 20 ns;
+        CCK <= '0';
+        RCK <= '1';
+        wait for 10 ps;
 
-        -- NOT_G <= '0';
-        -- A <= '0';
-        -- B <= '0';
-        -- C <= '0';
-        -- D <= '0';
-        -- wait for 20 ns;
+        CCK <= '1';
+        RCK <= '0';
+        wait for 10 ps;
 
-        -- NOT_G <= '1';
-        -- wait for 200 ns;
+        NOT_G <= '0';
+        CCK <= '0';
+        RCK <= '1';
+        wait for 10 ps;
+
+        --
+
+        CCK <= '1';
+        RCK <= '0';
+        wait for 10 ps;
+
+        CCK <= '0';
+        RCK <= '1';
+        wait for 10 ps;
+
+        CCK <= '1';
+        RCK <= '0';
+        wait for 10 ps;
+
+        CCK <= '0';
+        RCK <= '1';
+        wait for 10 ps;
+
+        CCK <= '1';
+        RCK <= '0';
+        wait for 10 ps;
+
+        CCK <= '0';
+        RCK <= '1';
+        wait for 10 ps;
+
+        CCK <= '1';
+        RCK <= '0';
+        wait for 10 ps;
+
+        CCK <= '0';
+        RCK <= '1';
+        wait for 10 ps;
+
+        -- disable RCK
+
+        RCK <= '0';
+        CCK <= '1';
+        wait for 10 ps;
+
+        R <= '0';
+        CCK <= '0';
+        wait for 10 ps;
+
+        CCK <= '1';
+        wait for 8 ps;
+
+        NOT_ENP <= '1';
+        U <= '1';
+        wait for 2 ps;
+
+        CCK <= '0';
+        wait for 10 ps;
+
+        CCK <= '1';
+        wait for 10 ps;
+
+        CCK <= '0';
+        NOT_ENT <= '1';
+        wait for 10 ps;
+
+        CCK <= '1';
+        wait for 10 ps;
+
+        CCK <= '0';
+        NOT_ENP <= '0';
+        wait for 10 ps;
+
+        CCK <= '1';
+        wait for 10 ps;
+
+        CCK <= '0';
 
         wait;
 
