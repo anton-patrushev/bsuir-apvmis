@@ -74,6 +74,8 @@ begin
         -- CCK <= '0';
         NOT_LOAD <= '0';
 
+        wait for 5 ps;
+
         -- wait for 5 ps;
         wait for 10 ps;
         
@@ -84,19 +86,19 @@ begin
         wait for 10 ps;
         
         -- CCK <= '1';
-        wait for 5 ps;
+        -- wait for 5 ps;
         
         NOT_CCLR <= '0';
-        wait for 5 ps;
+        wait for 10 ps;
 
         -- CCK <= '0';
         wait for 10 ps;
 
         -- CCK <= '1';
-        wait for 7 ps;
-
         NOT_CCLR <= '1';
-        wait for 3 ps;
+        wait for 10 ps;
+
+        -- wait for 3 ps;
 
         -- CCK <= '0';
         NOT_LOAD <= '0';
@@ -109,10 +111,10 @@ begin
         wait for 10 ps;
         
         -- CCK <= '1';
-        wait for 8 ps;
+        -- wait for 8 ps;
 
         NOT_LOAD <= '1';
-        wait for 2 ps;
+        wait for 10 ps;
 
         -- CCK <= '0';
         RCK <= '1';
@@ -172,10 +174,10 @@ begin
         wait for 10 ps;
         
         -- CCK <= '1';
-        wait for 5 ps;
+        -- wait for 5 ps;
 
         U <= '0';
-        wait for 5 ps;
+        wait for 10 ps;
 
         -- CCK <= '0';
         RCK <= '1';
@@ -183,10 +185,10 @@ begin
 
         -- CCK <= '1';
         RCK <= '0';
-        wait for 7 ps;
+        wait for 10 ps;
 
         NOT_G <= '1';
-        wait for 3 ps;
+        wait for 10 ps;
 
         --
 
