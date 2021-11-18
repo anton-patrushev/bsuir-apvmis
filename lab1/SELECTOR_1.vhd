@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 10/05/2021 10:29:11 AM
 -- Design Name: 
--- Module Name: ADD_GATE - Behavioral
+-- Module Name: LOGICAL_SELECTOR - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,15 +31,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity ADD_GATE is
+entity LOGICAL_SELECTOR is
     Port (
         OE: in STD_LOGIC;
         D : in STD_LOGIC_VECTOR(0 to 7);
         C, B, A : in STD_LOGIC;
         Y, W : out STD_LOGIC);
-end ADD_GATE;
+end LOGICAL_SELECTOR;
 
-architecture Behavioral of ADD_GATE is
+architecture Behavioral of LOGICAL_SELECTOR is
     SIGNAL tempY: STD_LOGIC;
 
 begin

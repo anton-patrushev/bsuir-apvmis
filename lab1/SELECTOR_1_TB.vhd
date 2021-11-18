@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 10/05/2021 10:30:29 AM
 -- Design Name: 
--- Module Name: ADD_GATE_TB - Behavioral
+-- Module Name: LOGICAL_SELECTOR_TB - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,19 +31,19 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity ADD_GATE_TB is
+entity LOGICAL_SELECTOR_TB is
 --  Port ( );
-end ADD_GATE_TB;
+end LOGICAL_SELECTOR_TB;
 
 
-architecture Behavioral of ADD_GATE_TB is
+architecture Behavioral of LOGICAL_SELECTOR_TB is
     
     SIGNAL D: STD_LOGIC_VECTOR (0 to 7):="10101010";
     SIGNAL OE, C, B, A, Y, W: STD_LOGIC;
 
 begin
 
-    uut: entity work.ADD_GATE port map(OE, D, C, B, A, Y, W);
+    uut: entity work.LOGICAL_SELECTOR port map(OE, D, C, B, A, Y, W);
     
     
     simulating: process
