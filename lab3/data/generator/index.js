@@ -97,7 +97,7 @@ function main() {
 
   const withExpectedValues = modifyValues(values);
 
-  writeIntoFile(withExpectedValues, "./lab1.txt");
+  writeIntoFile(withExpectedValues, "../lab1.txt");
 }
 
 main();
