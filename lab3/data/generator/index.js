@@ -40,18 +40,64 @@ function writeIntoFile(values, fileName) {
   fs.writeFileSync(fileName, data);
 }
 
+function multiplex(cba, d) {
+  switch (cba) {
+    case "000":
+      return d[0];
+    case "001":
+      return d[1];
+    case "010":
+      return d[2];
+    case "011":
+      return d[3];
+    case "100":
+      return d[4];
+    case "101":
+      return d[5];
+    case "110":
+      return d[6];
+    case "111":
+      return d[7];
+  }
+}
+
+function invert(digit) {
+  return digit === "1" ? "0" : "1";
+}
+
 function getArrayLengthByNumber(numberLength) {
   return 2 ** numberLength;
 }
 
+function addExpectedValue(value) {
+  // OE
+  if (value[0] == 1) return `ZZ${value}`;
+
+  const d = value.slice(1, 9).split("").reverse().join("");
+
+  const cba = value.slice(9);
+
+  const y = multiplex(cba, d);
+  const w = invert(y);
+
+  return `${y}${w}${value}`;
+}
+
+function modifyValues(values) {
+  return values.map(addExpectedValue);
+}
+
 function main() {
-  const numberLength = 12;
+  // OE, C, B, A, D(8) = 4 + 8 = 12
+  const numberLength = 12; // DO NOT CHANGE
 
   const arrayLength = getArrayLengthByNumber(numberLength);
 
   const values = generateValues(arrayLength, numberLength);
 
-  writeIntoFile(values, "../lab1.txt");
+  const withExpectedValues = modifyValues(values);
+
+  writeIntoFile(withExpectedValues, "./lab1.txt");
 }
 
 main();
