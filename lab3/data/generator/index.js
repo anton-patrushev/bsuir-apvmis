@@ -41,13 +41,14 @@ function writeIntoFile(values, fileName) {
 }
 
 function getArrayLengthByNumber(numberLength) {
-  return numberLength ** 2;
+  return 2 ** numberLength;
 }
 
 function main() {
-  const numberLength = 5;
+  const numberLength = 12;
 
   const arrayLength = getArrayLengthByNumber(numberLength);
+
   const values = generateValues(arrayLength, numberLength);
 
   writeIntoFile(values, "../lab1.txt");
