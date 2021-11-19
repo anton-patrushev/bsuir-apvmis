@@ -27,11 +27,11 @@ test_entity : entity work.LOGICAL_SELECTOR port map(OE, D, C, B, A, Y, W);
             readline (txt_file, current_line);
             read (current_line, file_value);
             
-            OE <= file_value(11)
-            D <= file_value(10 downto 3)
-            C <= file_value(2)
-            B <= file_value(1)
-            A <= file_value(0)
+            OE <= file_value(11);
+            D <= file_value(10 downto 3);
+            C <= file_value(2);
+            B <= file_value(1);
+            A <= file_value(0);
             EXPECTED_Y <= file_value(13);
             EXPECTED_W <= file_value(12);
             
