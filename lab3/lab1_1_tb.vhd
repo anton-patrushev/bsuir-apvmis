@@ -8,7 +8,7 @@ end lab1_1_tb;
 
 architecture lab1_1_tb_arch of lab1_1_tb is
   SIGNAL OE, C, B, A: STD_LOGIC;
-  SIGNAL D: STD_LOGIC_VECTOR(0 to 7);
+  SIGNAL D: STD_LOGIC_VECTOR(7 downto 0);
   SIGNAL Y, W: STD_LOGIC;
   SIGNAL EXPECTED_Y, EXPECTED_W: STD_LOGIC;
 
@@ -17,7 +17,7 @@ begin
 test_entity : entity work.LOGICAL_SELECTOR port map(OE, D, C, B, A, Y, W);
   
     tb: process
-        file txt_file : text is in "lab1.txt";
+        file txt_file : text is in "Z:/Documents/bsuir/term-7/apvmis/src/lab3/lab3.srcs/sources_1/imports/Desktop/gen_data.txt";
         variable current_line: line;
         -- 12 inputs + 2 outputs (expected)
         variable file_value: std_logic_vector(13 downto 0);
