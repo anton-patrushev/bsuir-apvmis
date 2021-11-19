@@ -34,7 +34,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity LOGICAL_SELECTOR is
     Port (
         OE: in STD_LOGIC;
-        D : in STD_LOGIC_VECTOR(0 to 7);
+        D : in STD_LOGIC_VECTOR(7 downto 0);
         C, B, A : in STD_LOGIC;
         Y, W : out STD_LOGIC);
 end LOGICAL_SELECTOR;
