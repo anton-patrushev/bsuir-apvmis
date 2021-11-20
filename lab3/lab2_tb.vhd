@@ -65,9 +65,9 @@ test_entity : entity work.DEVICE port map(
         variable current_line: line;
         -- 13 inputs + 5 outputs (expected)
         variable file_value: std_logic_vector(17 downto 0);
-        variable I : integer range 0 to 18;
+        variable I : integer range 0 to 26;
     begin
-        for I in 0 to 18 loop
+        for I in 0 to 26 loop
             readline (txt_file, current_line);
             read (current_line, file_value);
             
@@ -96,7 +96,7 @@ test_entity : entity work.DEVICE port map(
             
             wait for 0.01 ns;
             
-            if now = 0.01*19 ns then         
+            if now = 0.01*27 ns then         
                 wait;
             end if;
             
@@ -104,37 +104,37 @@ test_entity : entity work.DEVICE port map(
               
     end process tb;
     
-    test: process
-    begin
-       if (not(QA = EXPECTED_QA))
-       then    
-           report "ERROR - QA" severity failure;
-       end if;
+     test: process
+     begin
+        if (not(QA = EXPECTED_QA))
+        then    
+            report "ERROR - QA" severity failure;
+        end if;
        
-       if (not(QB = EXPECTED_QB))
-       then    
-           report "ERROR - QB" severity failure;
-       end if;
+        if (not(QB = EXPECTED_QB))
+        then    
+            report "ERROR - QB" severity failure;
+        end if;
 
-       if (not(QD = EXPECTED_QD))
-       then    
-           report "ERROR - QC" severity failure;
-       end if;
+        if (not(QD = EXPECTED_QD))
+        then    
+            report "ERROR - QC" severity failure;
+        end if;
 
-       if (not(QD = EXPECTED_QD))
-       then    
-           report "ERROR - QD" severity failure;
-       end if;
+        if (not(QD = EXPECTED_QD))
+        then    
+            report "ERROR - QD" severity failure;
+        end if;
        
-       if (not(NOT_RCO = EXPECTED_NOT_RCO))
-       then    
-           report "ERROR - NOT_RCO" severity failure;
-       end if;
-       if now = 0.01*19 ns then
-            report "Test suite finished successfully"; 
-            wait;
-       end if;
-       wait for 0.01 ns;
-    end process;
+        if (not(NOT_RCO = EXPECTED_NOT_RCO))
+        then    
+            report "ERROR - NOT_RCO" severity failure;
+        end if;
+        if now = 0.01*27 ns then
+             report "Test suite finished successfully"; 
+             wait;
+        end if;
+        wait for 0.01 ns;
+     end process;
 
 end lab2_tb_arch;
