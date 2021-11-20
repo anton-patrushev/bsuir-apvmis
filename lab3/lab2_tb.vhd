@@ -92,7 +92,7 @@ test_entity : entity work.DEVICE port map(
             
             EXPECTED_NOT_RCO <= file_value(13);
             
-            -- report "STEP";
+            report "STEP";
             
             wait for 0.01 ns;
             
@@ -125,8 +125,13 @@ test_entity : entity work.DEVICE port map(
        then    
            report "ERROR - QD" severity failure;
        end if;
+       
+       if (not(NOT_RCO = EXPECTED_NOT_RCO))
+       then    
+           report "ERROR - NOT_RCO" severity failure;
+       end if;
        if now = 0.01*19 ns then
-            report "finish test successfully"; 
+            report "Test suite finished successfully"; 
             wait;
        end if;
        wait for 0.01 ns;
