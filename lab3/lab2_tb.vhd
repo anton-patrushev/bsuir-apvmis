@@ -67,7 +67,7 @@ test_entity : entity work.DEVICE port map(
         variable file_value: std_logic_vector(17 downto 0);
         variable I : integer range 0 to 18;
     begin
-        for I in 0 to 24 loop
+        for I in 0 to 18 loop
             readline (txt_file, current_line);
             read (current_line, file_value);
             
@@ -92,7 +92,7 @@ test_entity : entity work.DEVICE port map(
             
             EXPECTED_NOT_RCO <= file_value(13);
             
-            report "STEP";
+            -- report "STEP";
             
             wait for 0.01 ns;
             
@@ -125,7 +125,7 @@ test_entity : entity work.DEVICE port map(
        then    
            report "ERROR - QD" severity failure;
        end if;
-       if now = 0.01*18 ns then
+       if now = 0.01*19 ns then
             report "finish test successfully"; 
             wait;
        end if;
