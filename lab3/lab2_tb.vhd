@@ -65,9 +65,9 @@ test_entity : entity work.DEVICE port map(
         variable current_line: line;
         -- 13 inputs + 5 outputs (expected)
         variable file_value: std_logic_vector(17 downto 0);
-        variable I : integer range 0 to 55;
+        variable I : integer range 0 to 87;
     begin
-        for I in 0 to 55 loop
+        for I in 0 to 87 loop
             readline (txt_file, current_line);
             read (current_line, file_value);
             
@@ -92,11 +92,9 @@ test_entity : entity work.DEVICE port map(
             
             EXPECTED_NOT_RCO <= file_value(13);
             
-            report "STEP";
-            
             wait for 0.01 ns;
             
-            if now = 0.01*56 ns then         
+            if now = 0.01*88 ns then         
                 wait;
             end if;
             
@@ -116,7 +114,7 @@ test_entity : entity work.DEVICE port map(
             report "ERROR - QB" severity failure;
         end if;
 
-        if (not(QD = EXPECTED_QD))
+        if (not(QC = EXPECTED_QC))
         then    
             report "ERROR - QC" severity failure;
         end if;
@@ -130,7 +128,7 @@ test_entity : entity work.DEVICE port map(
         then    
             report "ERROR - NOT_RCO" severity failure;
         end if;
-        if now = 0.01*56 ns then
+        if now = 0.01*88 ns then
              report "Test suite finished successfully"; 
              wait;
         end if;
