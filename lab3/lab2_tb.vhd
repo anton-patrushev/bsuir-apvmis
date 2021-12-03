@@ -61,13 +61,13 @@ test_entity : entity work.DEVICE port map(
 );
   
     tb: process
-        file txt_file : text is in "Z:/Documents/bsuir/term-7/apvmis/src/lab3/lab3.srcs/sources_1/imports/Desktop/lab2.txt";
+        file txt_file : text is in "C:\Users\Administrator\Desktop\lab2.txt";
         variable current_line: line;
         -- 13 inputs + 5 outputs (expected)
         variable file_value: std_logic_vector(17 downto 0);
-        variable I : integer range 0 to 93;
+        variable I : integer range 0 to 108;
     begin
-        for I in 0 to 93 loop
+        for I in 0 to 108 loop
             readline (txt_file, current_line);
             read (current_line, file_value);
             
@@ -94,7 +94,7 @@ test_entity : entity work.DEVICE port map(
             
             wait for 0.01 ns;
             
-            if now = 0.01*94 ns then         
+            if now = 0.01*109 ns then         
                 wait;
             end if;
             
@@ -128,7 +128,7 @@ test_entity : entity work.DEVICE port map(
         then    
             report "ERROR - NOT_RCO" severity failure;
         end if;
-        if now = 0.01*94 ns then
+        if now = 0.01*109 ns then
              report "Test suite finished successfully"; 
              wait;
         end if;
