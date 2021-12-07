@@ -55,9 +55,9 @@ end component;
     
     
     signal CLK_AFTER_DIV: std_logic;
-    signal CCK_NO_DIV : std_logic;
+    signal CLK_NO_DIV : std_logic;
 
-    signal CPD_CPU_board, TCD_board, TCU_board: std_logic := '0';
+    signal CCK_RCK_board: std_logic := '0';
     
     signal QA: std_logic;
     signal QB: std_logic;
@@ -72,8 +72,6 @@ end component;
     
     signal DATA_board: std_logic_vector (3 downto 0);
     
-    signal MR_board: std_logic := '0';
-    signal PL_board: std_logic := '0';
     signal CCK: std_logic := '0';
     signal RCK: std_logic := '0';
 
@@ -95,7 +93,7 @@ end component;
     signal NOT_ENP: std_logic;
     
 begin
-    MR_board <= pushbuttons(0);
+    CCK_RCK_board <= pushbuttons(0);
     R <= pushbuttons(1);
     LOAD <= pushbuttons(2);
     CCLR <= pushbuttons(3);
@@ -109,16 +107,16 @@ begin
     buffds: ibufds port map (
        i => sysclk_p, 
        ib => sysclk_n, 
-       o => CCK_NO_DIV
+       o => CLK_NO_DIV
     );
    
     div: divider port map (
-       CLK_IN => CCK_NO_DIV, 
-       CLK_OUT => CLK_AFTER_DIV
+       CLK_IN => CLK_NO_DIV, 
+       CLK_OUT => CCK_RCK_board
     );
     
-    RCK <= not (CLK_AFTER_DIV and CPD_CPU_board);
-    CCK <= not (CLK_AFTER_DIV and not CPD_CPU_board);
+    RCK <= not (CLK_AFTER_DIV and CCK_RCK_board);
+    CCK <= not (CLK_AFTER_DIV and not CCK_RCK_board);
 
     NOT_CCLR <= not (CCLR);
     NOT_LOAD <= not (LOAD);
